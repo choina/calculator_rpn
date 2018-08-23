@@ -53,6 +53,8 @@
             this.cos = new System.Windows.Forms.Button();
             this.sin = new System.Windows.Forms.Button();
             this.tg = new System.Windows.Forms.Button();
+            this.p2 = new System.Windows.Forms.Button();
+            this.sqrt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // field
@@ -302,11 +304,33 @@
             this.tg.UseVisualStyleBackColor = true;
             this.tg.Click += new System.EventHandler(this.button3_Click);
             // 
+            // p2
+            // 
+            this.p2.Location = new System.Drawing.Point(236, 264);
+            this.p2.Name = "p2";
+            this.p2.Size = new System.Drawing.Size(50, 50);
+            this.p2.TabIndex = 25;
+            this.p2.Text = "^²";
+            this.p2.UseVisualStyleBackColor = true;
+            this.p2.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // sqrt
+            // 
+            this.sqrt.Location = new System.Drawing.Point(292, 40);
+            this.sqrt.Name = "sqrt";
+            this.sqrt.Size = new System.Drawing.Size(50, 50);
+            this.sqrt.TabIndex = 26;
+            this.sqrt.Text = "√";
+            this.sqrt.UseVisualStyleBackColor = true;
+            this.sqrt.Click += new System.EventHandler(this.sqrt_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 351);
+            this.Controls.Add(this.sqrt);
+            this.Controls.Add(this.p2);
             this.Controls.Add(this.tg);
             this.Controls.Add(this.sin);
             this.Controls.Add(this.cos);
@@ -366,6 +390,8 @@
         private System.Windows.Forms.Button cos;
         private System.Windows.Forms.Button sin;
         private System.Windows.Forms.Button tg;
+        private System.Windows.Forms.Button p2;
+        private System.Windows.Forms.Button sqrt;
     }
 }
 

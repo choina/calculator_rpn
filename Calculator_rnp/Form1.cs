@@ -139,5 +139,15 @@ namespace Calculator_rnp
         {
             field.Text += "tg(";
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            field.Text += "^2";
+        }
+
+        private void sqrt_Click(object sender, EventArgs e)
+        {
+            field.Text += "sqrt(";
+        }
     }
 }

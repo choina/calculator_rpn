@@ -19,12 +19,12 @@ namespace Calculator_rnp
         static private string GetExpression(string input)
         {
             string output = string.Empty;
-            string fun = string.Empty;
+            string funcc = string.Empty;
             Stack<char> operStack = new Stack<char>();
             char k = ' '; string p = "";
             for (int i = 0; i < input.Length; i++)
             {
-                if (IsOperator(input[i]) || Char.IsDigit(input[i]))
+                if (CheckOper(input[i]) || Char.IsDigit(input[i]))
                 {
                     if (k == ' ')
                         k = input[i];
@@ -42,7 +42,7 @@ namespace Calculator_rnp
                     continue;
                 if (Char.IsDigit(input[i]))
                 {
-                    while (!IsDelimeter(input[i]) && !IsOperator(input[i]))
+                    while (!IsDelimeter(input[i]) && !CheckOper(input[i]))
                     {
                         output += input[i];
                         i++;
@@ -52,7 +52,7 @@ namespace Calculator_rnp
                     i--;
                 }
                 else
-                    if (IsOperator(input[i]))
+                    if (CheckOper(input[i]))
                 {
                     if (input[i] == '(')
                         operStack.Push(input[i]);
@@ -68,7 +68,7 @@ namespace Calculator_rnp
                     else
                     {
                         if (operStack.Count > 0)
-                            if (GetPriority(input[i]) <= GetPriority(operStack.Peek()))
+                            if (DeterminePriority(input[i]) <= DeterminePriority(operStack.Peek()))
                                 output += operStack.Pop().ToString() + " ";
 
                         operStack.Push(char.Parse(input[i].ToString()));
@@ -81,15 +81,15 @@ namespace Calculator_rnp
                     output += " e ";
                 else
                 {
-                    fun = String.Empty;
+                    funcc = String.Empty;
                     while (input[i] != '(')
                     {
-                        fun += input[i];
+                        funcc += input[i];
                         i++;
                         if (i == input.Length) break;
                     }
                     i++;
-                    if (IsFunction(fun))
+                    if (CheckFunc(funcc))
                     {
                         String param = String.Empty;
                         while (input[i] != ')')
@@ -101,7 +101,7 @@ namespace Calculator_rnp
                         double d;
                         try { d = double.Parse(param); }
                         catch (Exception) { d = Counting(GetExpression(param)); }
-                        output += doFunc(fun, d);
+                        output += Funcc(funcc, d);
                     }
                 }
             }
@@ -112,7 +112,7 @@ namespace Calculator_rnp
             }
 
 
-        static private bool IsOperator(char с)
+        static private bool CheckOper(char с)
         {
             if (("+-/*^()PC!%".IndexOf(с) != -1))
                 return true;
@@ -124,7 +124,7 @@ namespace Calculator_rnp
                 return true;
             return false;
         }
-        static private byte GetPriority(char s)
+        static private byte DeterminePriority(char s)
         {
             switch (s)
             {
@@ -154,7 +154,7 @@ namespace Calculator_rnp
                     {
                         string a = string.Empty;
 
-                        while (!IsDelimeter(input[i]) && !IsOperator(input[i]))
+                        while (!IsDelimeter(input[i]) && !CheckOper(input[i]))
                         {
                             a += input[i];
                             i++;
@@ -167,7 +167,7 @@ namespace Calculator_rnp
                         temp.Push(Math.PI);
                     else if (input[i] == 'e')
                         temp.Push(Math.E);
-                    else if (IsOperator(input[i]))
+                    else if (CheckOper(input[i]))
                     {
                         double a = temp.Pop();
                         try
@@ -176,9 +176,9 @@ namespace Calculator_rnp
 
                         switch (input[i])
                         {
-                            case '!': result = factorial((int)a); break;
-                            case 'P': result = factorial((int)b) / factorial((int)(b - a)); break;
-                            case 'C': result = factorial((int)b) / (factorial((int)a) * factorial((int)(b - a))); break;
+                            case '!': result = Factorial((int)a); break;
+                            case 'P': result = Factorial((int)b) / Factorial((int)(b - a)); break;
+                            case 'C': result = Factorial((int)b) / (Factorial((int)a) * Factorial((int)(b - a))); break;
                             case '^': result = Math.Pow(b, a); break;
                             case '%': result = b % a; break;
                             case '+': result = b + a; break;
@@ -195,14 +195,14 @@ namespace Calculator_rnp
             }
 
         }
-        static private bool IsFunction(String s)
+        static private bool CheckFunc(String s)
         {
             String[] func = { "sin", "cos", "tg", "asin", "acos", "atg", "sqrt", "ln", "lg" };
             if (Array.Exists(func, e => e == s))
                 return true;
             return false;
         }
-        private static int factorial(int x)
+        private static int Factorial(int x)
         {
             int i = 1;
             for (int s = 1; s <= x; s++)
@@ -210,7 +210,7 @@ namespace Calculator_rnp
             if (x < 0) throw new NegativeFactorialException(x);
             return i;
         }
-        static private String doFunc(String fun, double param)
+        static private String Funcc(String fun, double param)
         {
             switch (fun)
             {

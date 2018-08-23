@@ -124,5 +124,20 @@ namespace Calculator_rnp
         {
             field.Text = String.Empty;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            field.Text += "cos(";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            field.Text += "sin(";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            field.Text += "tg(";
+        }
     }
 }

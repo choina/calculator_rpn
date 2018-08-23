@@ -50,6 +50,9 @@
             this.percent = new System.Windows.Forms.Button();
             this.exponentation = new System.Windows.Forms.Button();
             this.ce = new System.Windows.Forms.Button();
+            this.cos = new System.Windows.Forms.Button();
+            this.sin = new System.Windows.Forms.Button();
+            this.tg = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // field
@@ -269,11 +272,44 @@
             this.ce.UseVisualStyleBackColor = true;
             this.ce.Click += new System.EventHandler(this.ce_Click);
             // 
+            // cos
+            // 
+            this.cos.Location = new System.Drawing.Point(236, 96);
+            this.cos.Name = "cos";
+            this.cos.Size = new System.Drawing.Size(50, 50);
+            this.cos.TabIndex = 22;
+            this.cos.Text = "cos";
+            this.cos.UseVisualStyleBackColor = true;
+            this.cos.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // sin
+            // 
+            this.sin.Location = new System.Drawing.Point(236, 152);
+            this.sin.Name = "sin";
+            this.sin.Size = new System.Drawing.Size(50, 50);
+            this.sin.TabIndex = 23;
+            this.sin.Text = "sin";
+            this.sin.UseVisualStyleBackColor = true;
+            this.sin.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // tg
+            // 
+            this.tg.Location = new System.Drawing.Point(236, 208);
+            this.tg.Name = "tg";
+            this.tg.Size = new System.Drawing.Size(50, 50);
+            this.tg.TabIndex = 24;
+            this.tg.Text = "tg";
+            this.tg.UseVisualStyleBackColor = true;
+            this.tg.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 450);
+            this.ClientSize = new System.Drawing.Size(396, 351);
+            this.Controls.Add(this.tg);
+            this.Controls.Add(this.sin);
+            this.Controls.Add(this.cos);
             this.Controls.Add(this.ce);
             this.Controls.Add(this.exponentation);
             this.Controls.Add(this.percent);
@@ -327,6 +363,9 @@
         private System.Windows.Forms.Button percent;
         private System.Windows.Forms.Button exponentation;
         private System.Windows.Forms.Button ce;
+        private System.Windows.Forms.Button cos;
+        private System.Windows.Forms.Button sin;
+        private System.Windows.Forms.Button tg;
     }
 }
 
